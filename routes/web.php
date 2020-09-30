@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $dataBanChay = DB::table('sach')->where(['banchay'=>1])->offset(0)->limit(4)->get();
-    $dataKhuyenMai = DB::table('sach')->where('khuyenmai','>',0)->orderby('khuyenmai','desc')->offset(0)->limit(4)->get();
+    $dataKhuyenMai = DB::table('sach')->where('khuyenmai','>',0)->orderby('khuyenmai','desc')->offset(0)->limit(10)->get();
     $title = 'Homepage';
     return view('user.home',['banchay'=>$dataBanChay,'khuyenmai'=>$dataKhuyenMai,'title'=>$title]);
 });
@@ -29,7 +29,8 @@ Route::group(['prefix'=>'product'],function(){
 
     Route::get('detail/{id}',function($id){
         $data = DB::table('sach')->where(['masach'=>$id])->first();
-        return view('product_detail',['data'=>$data]);
+        $title = "Product detail";
+        return view('product_detail',['data'=>$data,'title'=>$title]);
     })->where('id','[a-zA-Z0-9]+');
 });
 
