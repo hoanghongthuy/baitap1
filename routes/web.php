@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,3 +90,10 @@ Route::group(['prefix'=>'admin'],function(){
     });
 });
 
+Route::get('hello-send-mail',function(){
+    $data = [];
+    $to_email = 'nduykhanh109@gmail.com';
+    Mail::send('emails.activation', $data, function($message) use ($to_email) {
+        $message->to($to_email)->subject("hello send mail");
+    });
+});
