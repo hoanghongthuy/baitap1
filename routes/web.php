@@ -29,9 +29,10 @@ Route::group(['prefix'=>'product'],function(){
     })->where('id','[a-z]+');
 
     Route::get('detail/{id}',function($id){
+        $dataBanChay = DB::table('sach')->where(['banchay'=>1])->offset(0)->limit(4)->get();
         $data = DB::table('sach')->where(['masach'=>$id])->first();
         $title = "Product detail";
-        return view('product_detail',['data'=>$data,'title'=>$title]);
+        return view('product_detail',['data'=>$data,'title'=>$title,'banchay'=>$dataBanChay]);
     })->where('id','[a-zA-Z0-9]+');
 });
 

@@ -58,4 +58,25 @@
             </div>
         </div>
     </section>
+    <section class="related-books">
+        <div class="container">
+            <h2>Sách liên quan</h2>
+            <div class="recomended-sec">
+                <div class="row">
+                    @foreach ($banchay as $data)
+                    <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                            <img src="{{url('book-store')}}/html/images/img1.jpg" alt="img">
+                            <h3>{{$data->tensach}}</h3>
+                            <h6><span class="price">$49</span> / <a href="#">Buy Now</a></h6>
+                            <div class="hover">
+                                <span><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
